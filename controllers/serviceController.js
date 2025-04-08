@@ -19,17 +19,7 @@ exports.addService = (req, res) => {
         if (!Array.isArray(priceOptions) || priceOptions.length === 0) {
             return res.status(400).json({ error: 'priceOptions must be a non-empty array' });
         }
-        for (const p of priceOptions) {
-            if (typeof p.duration !== 'number' || p.duration <= 0) {
-                return res.status(400).json({ error: 'Each priceOption.duration must be a positive number' });
-            }
-            if (typeof p.price !== 'number' || p.price < 0) {
-                return res.status(400).json({ error: 'Each priceOption.price must be a non-negative number' });
-            }
-            if (!p.type || typeof p.type !== 'string') {
-                return res.status(400).json({ error: 'Each priceOption.type is required and must be a string' });
-            }
-        }
+        
 
         // Insert service
         db.query(
