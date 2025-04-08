@@ -66,7 +66,7 @@ exports.deleteCategory = (req, res) => {
             if (err) return res.status(500).json({ error: err });
 
             if (results[0].count > 0) {
-                return res.status(400).json({ message: 'Category not empty' });
+                return res.status(400).json({ message: 'Service Added this Category Id Does Not Delete' });
             }
 
             db.query('DELETE FROM categories WHERE id = ?', [categoryId], (err) => {
